@@ -1,9 +1,12 @@
 {
-  "name": "demo01-client",
+  "name": "demo02-client",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "start:dev": "node ."
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }

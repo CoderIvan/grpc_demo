@@ -1,5 +1,7 @@
 const PROTO_PATH = `${__dirname}/../common/helloworld.proto`
+// eslint-disable-next-line import/no-extraneous-dependencies
 const grpc = require('@grpc/grpc-js')
+// eslint-disable-next-line import/no-extraneous-dependencies
 const protoLoader = require('@grpc/proto-loader')
 const { port } = require('../common/config')
 
