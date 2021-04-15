@@ -25,13 +25,9 @@ async function runGetFeature() {
 		const feature = await getFeatureAsync(point)
 
 		if (feature.name === '') {
-			console.log(`Found no feature at ${
-				feature.location.latitude / COORD_FACTOR}, ${
-				feature.location.longitude / COORD_FACTOR}`)
+			console.log(`Found no feature at ${feature.location.latitude / COORD_FACTOR}, ${feature.location.longitude / COORD_FACTOR}`)
 		} else {
-			console.log(`Found feature called "${feature.name}" at ${
-				feature.location.latitude / COORD_FACTOR}, ${
-				feature.location.longitude / COORD_FACTOR}`)
+			console.log(`Found feature called "${feature.name}" at ${feature.location.latitude / COORD_FACTOR}, ${feature.location.longitude / COORD_FACTOR}`)
 		}
 	}
 
