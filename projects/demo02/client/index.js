@@ -5,6 +5,8 @@ const grpc = require('@grpc/grpc-js')
 // eslint-disable-next-line import/no-extraneous-dependencies
 const protoLoader = require('@grpc/proto-loader')
 
+const { port } = require('../common/config')
+
 const packageDefinition = protoLoader.loadSync(path.join(__dirname, '../common/route_guide.proto'), {
 	keepCase: true,
 	longs: String,
@@ -13,8 +15,7 @@ const packageDefinition = protoLoader.loadSync(path.join(__dirname, '../common/r
 	oneofs: true,
 })
 const { routeguide } = grpc.loadPackageDefinition(packageDefinition)
-const client = new routeguide.RouteGuide('localhost:50051',
-	grpc.credentials.createInsecure())
+const client = new routeguide.RouteGuide(`localhost:${port}`, grpc.credentials.createInsecure())
 
 const COORD_FACTOR = 1e7
 

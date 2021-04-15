@@ -4,6 +4,7 @@ const fs = require('fs')
 const grpc = require('@grpc/grpc-js')
 // eslint-disable-next-line import/no-extraneous-dependencies
 const protoLoader = require('@grpc/proto-loader')
+const { port } = require('../common/config')
 
 const packageDefinition = protoLoader.loadSync(path.join(__dirname, '../common/route_guide.proto'), {
 	keepCase: true,
@@ -46,8 +47,9 @@ function main() {
 		//   routeChat,
 	})
 
-	server.bindAsync('0.0.0.0:50051', grpc.ServerCredentials.createInsecure(), () => {
+	server.bindAsync(`0.0.0.0:${port}`, grpc.ServerCredentials.createInsecure(), () => {
 		server.start()
+		console.log('[Server] Listen @ %d', port)
 	})
 }
 
