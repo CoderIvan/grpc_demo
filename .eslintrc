@@ -1,0 +1,16 @@
+{
+  "extends": ["airbnb-base"],
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "object-curly-newline": [2, { "consistent": true }],
+    "semi": [2, "never"],
+    "semi-style": [2, "first"],
+    "indent": [2, "tab"],
+    "no-tabs": [2, { "allowIndentationTabs": true }],
+    "max-len": 0,
+    "camelcase": 0,
+    "no-console": 0
+  }
+}
