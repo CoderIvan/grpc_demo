@@ -16,6 +16,7 @@
   "dependencies": {
     "@grpc/grpc-js": "^1.2.12",
     "@grpc/proto-loader": "^0.6.1",
-    "bluebird": "^3.7.2"
+    "bluebird": "^3.7.2",
+    "lodash": "^4.17.21"
   }
 }

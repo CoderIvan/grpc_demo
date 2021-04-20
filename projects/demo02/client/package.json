@@ -5,8 +5,5 @@
   "license": "MIT",
   "scripts": {
     "start:dev": "node ."
-  },
-  "dependencies": {
-    "lodash": "^4.17.21"
   }
 }
