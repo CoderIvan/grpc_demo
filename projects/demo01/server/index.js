@@ -18,16 +18,33 @@ function sayHello(request) {
 	return { message: `Hello ${request.name}` }
 }
 
-function sayHelloHandle(call, callback) {
-	console.log('[Server] << %j', call.request)
-	const response = sayHello(call.request)
-	callback(null, response)
-	console.log('[Server] >> %j', response)
+function sayHelloAgain(request) {
+	return { message: `Hello again, ${request.name}` }
+}
+
+function wrap(func) {
+	return (call, callback) => {
+		console.log('[Server] << %j', call.request)
+		const response = func(call.request)
+		callback(null, response)
+		console.log('[Server] >> %j', response)
+	}
+}
+
+function wrapFuncMap(funcMap) {
+	return Object.keys(funcMap).reduce((previousValue, funcName) => {
+		// eslint-disable-next-line no-param-reassign
+		previousValue[funcName] = wrap(funcMap[funcName])
+		return previousValue
+	}, {})
 }
 
 function main() {
 	const server = new grpc.Server()
-	server.addService(hello_proto.Greeter.service, { sayHello: sayHelloHandle })
+	server.addService(hello_proto.Greeter.service, wrapFuncMap({
+		sayHello,
+		sayHelloAgain,
+	}))
 
 	server.bindAsync(`0.0.0.0:${port}`, grpc.ServerCredentials.createInsecure(), () => {
 		server.start()

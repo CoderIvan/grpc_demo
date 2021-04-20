@@ -15,7 +15,7 @@ const packageDefinition = protoLoader.loadSync(path.join(__dirname, '../common/r
 })
 const { routeguide } = grpc.loadPackageDefinition(packageDefinition)
 
-const feature_list = JSON.parse(fs.readFileSync(path.join(__dirname, '../common/route_guide_db.json')))
+const feature_list = JSON.parse(fs.readFileSync(path.join(__dirname, './route_guide_db.json')))
 
 function checkFeature(point) {
 	let feature
